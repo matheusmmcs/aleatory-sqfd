@@ -19,6 +19,17 @@ public class FileAnalyzer {
         return line;
 	}
 	
+	public static int countPattern(String content, String patt, boolean caseSensitive){
+		Pattern pattern; 
+		pattern = caseSensitive ? Pattern.compile(patt) : Pattern.compile(patt, Pattern.CASE_INSENSITIVE);
+        Matcher  matcher = pattern.matcher(content);
+        int count = 0;
+        while (matcher.find()){
+        	count++;
+        }
+        return count;
+	}
+	
 	public static String getPatternFirst(String content, String patt, Integer group){
 		return getPattern(content, patt, group, EnumPatternPosition.FIRST);
 	}
